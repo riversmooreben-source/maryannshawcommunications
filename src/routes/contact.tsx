@@ -1,12 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { useServerFn } from "@tanstack/react-start";
 import { PageHeader } from "@/components/page-header";
 import { Reveal } from "@/components/reveal";
 import { SocialIcon } from "@/components/social-icon";
-import { sendEnquiry } from "@/lib/enquiry.functions";
 import { contact, services } from "@/data/site";
-
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -30,11 +27,7 @@ export const Route = createFileRoute("/contact")({
 });
 
 function Contact() {
-  const submit = useServerFn(sendEnquiry);
   const [sent, setSent] = useState(false);
-  const [sending, setSending] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
 
   return (
     <>
@@ -58,7 +51,10 @@ function Contact() {
             </div>
             <div>
               <p className="eyebrow">Phone</p>
-              <a href={contact.phoneHref} className="link-underline mt-2 inline-block font-display text-2xl">
+              <a
+                href={contact.phoneHref}
+                className="link-underline mt-2 inline-block font-display text-2xl"
+              >
                 {contact.phone}
               </a>
             </div>
@@ -88,41 +84,32 @@ function Contact() {
           <Reveal delay={80}>
             {sent ? (
               <div className="rounded-lg border border-border bg-secondary/50 p-10">
-                <h2 className="font-display text-3xl">Thank you.</h2>
+                <h2 className="font-display text-3xl">Almost there.</h2>
                 <p className="mt-4 text-muted-foreground">
-                  Your enquiry has been sent to our team. We'll be in touch shortly.
+                  Your email app should have opened with your message ready to go — just hit send
+                  from there.
                 </p>
               </div>
             ) : (
               <form
                 className="space-y-6"
-                onSubmit={async (e) => {
+                onSubmit={(e) => {
                   e.preventDefault();
                   const form = e.currentTarget;
                   const data = new FormData(form);
-                  setError(null);
-                  setSending(true);
-                  try {
-                    await submit({
-                      data: {
-                        name: String(data.get("name") ?? ""),
-                        email: String(data.get("email") ?? ""),
-                        interest: String(data.get("interest") ?? ""),
-                        message: String(data.get("message") ?? ""),
-                      },
-                    });
-                    form.reset();
-                    setSent(true);
-                  } catch {
-                    setError(
-                      "Sorry — your enquiry couldn't be sent. Please try again or email us directly.",
-                    );
-                  } finally {
-                    setSending(false);
-                  }
+                  const name = String(data.get("name") ?? "");
+                  const email = String(data.get("email") ?? "");
+                  const interest = String(data.get("interest") ?? "");
+                  const message = String(data.get("message") ?? "");
+
+                  const subject = `Website enquiry — ${name} (${interest})`;
+                  const body = `Name: ${name}\nEmail: ${email}\nInterest: ${interest}\n\n${message}`;
+                  const mailto = `mailto:${contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+                  window.location.href = mailto;
+                  setSent(true);
                 }}
               >
-
                 <div className="grid gap-6 sm:grid-cols-2">
                   <label className="block">
                     <span className="eyebrow">Name</span>
@@ -165,18 +152,11 @@ function Contact() {
                     className="mt-2 w-full resize-none border-b border-border bg-transparent py-3 outline-none focus:border-foreground"
                   />
                 </label>
-                {error && (
-                  <p role="alert" className="text-sm text-destructive">
-                    {error}
-                  </p>
-                )}
                 <button
                   type="submit"
-                  disabled={sending}
-                  className="inline-flex items-center rounded-full bg-primary px-8 py-4 text-xs font-semibold uppercase tracking-[0.16em] text-primary-foreground transition-colors hover:bg-accent disabled:opacity-60"
+                  className="inline-flex items-center rounded-full bg-primary px-8 py-4 text-xs font-semibold uppercase tracking-[0.16em] text-primary-foreground transition-colors hover:bg-accent"
                 >
-                  {sending ? "Sending…" : "Send Enquiry"}
-
+                  Send Enquiry
                 </button>
               </form>
             )}
