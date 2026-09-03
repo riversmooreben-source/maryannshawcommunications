@@ -45,8 +45,8 @@ export function SiteNav() {
             src={logoUrl}
             alt=""
             aria-hidden="true"
-            width={354}
-            height={130}
+            width={1584}
+            height={672}
             decoding="async"
             fetchPriority="high"
             className="h-10 w-auto md:h-12"
