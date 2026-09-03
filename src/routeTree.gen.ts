@@ -12,10 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as TeamRouteImport } from './routes/team'
+import { Route as InsightsIndexRouteImport } from './routes/insights.index'
+import { Route as InsightsSlugRouteImport } from './routes/insights.$slug'
 import { Route as WorkIndexRouteImport } from './routes/work.index'
 import { Route as WorkSlugRouteImport } from './routes/work.$slug'
 
@@ -34,11 +35,6 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const InsightsRoute = InsightsRouteImport.update({
-  id: '/insights',
-  path: '/insights',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -52,6 +48,16 @@ const ServicesRoute = ServicesRouteImport.update({
 const TeamRoute = TeamRouteImport.update({
   id: '/team',
   path: '/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsIndexRoute = InsightsIndexRouteImport.update({
+  id: '/insights/',
+  path: '/insights/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsSlugRoute = InsightsSlugRouteImport.update({
+  id: '/insights/$slug',
+  path: '/insights/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WorkIndexRoute = WorkIndexRouteImport.update({
@@ -69,22 +75,24 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/insights': typeof InsightsRoute
   '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
   '/team': typeof TeamRoute
+  '/insights/$slug': typeof InsightsSlugRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/insights/': typeof InsightsIndexRoute
   '/work/': typeof WorkIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/insights': typeof InsightsRoute
   '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
   '/team': typeof TeamRoute
+  '/insights/$slug': typeof InsightsSlugRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/insights': typeof InsightsIndexRoute
   '/work': typeof WorkIndexRoute
 }
 export interface FileRoutesById {
@@ -92,11 +100,12 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/insights': typeof InsightsRoute
   '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
   '/team': typeof TeamRoute
+  '/insights/$slug': typeof InsightsSlugRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/insights/': typeof InsightsIndexRoute
   '/work/': typeof WorkIndexRoute
 }
 export interface FileRouteTypes {
@@ -105,33 +114,36 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
-    | '/insights'
     | '/privacy'
     | '/services'
     | '/team'
+    | '/insights/$slug'
     | '/work/$slug'
+    | '/insights/'
     | '/work/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/contact'
-    | '/insights'
     | '/privacy'
     | '/services'
     | '/team'
+    | '/insights/$slug'
     | '/work/$slug'
+    | '/insights'
     | '/work'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/contact'
-    | '/insights'
     | '/privacy'
     | '/services'
     | '/team'
+    | '/insights/$slug'
     | '/work/$slug'
+    | '/insights/'
     | '/work/'
   fileRoutesById: FileRoutesById
 }
@@ -139,11 +151,12 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
-  InsightsRoute: typeof InsightsRoute
   PrivacyRoute: typeof PrivacyRoute
   ServicesRoute: typeof ServicesRoute
   TeamRoute: typeof TeamRoute
+  InsightsSlugRoute: typeof InsightsSlugRoute
   WorkSlugRoute: typeof WorkSlugRoute
+  InsightsIndexRoute: typeof InsightsIndexRoute
   WorkIndexRoute: typeof WorkIndexRoute
 }
 
@@ -170,13 +183,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/insights': {
-      id: '/insights'
-      path: '/insights'
-      fullPath: '/insights'
-      preLoaderRoute: typeof InsightsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
@@ -196,6 +202,20 @@ declare module '@tanstack/react-router' {
       path: '/team'
       fullPath: '/team'
       preLoaderRoute: typeof TeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights/': {
+      id: '/insights/'
+      path: '/insights'
+      fullPath: '/insights/'
+      preLoaderRoute: typeof InsightsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights/$slug': {
+      id: '/insights/$slug'
+      path: '/insights/$slug'
+      fullPath: '/insights/$slug'
+      preLoaderRoute: typeof InsightsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/work/': {
@@ -219,11 +239,12 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
-  InsightsRoute: InsightsRoute,
   PrivacyRoute: PrivacyRoute,
   ServicesRoute: ServicesRoute,
   TeamRoute: TeamRoute,
+  InsightsSlugRoute: InsightsSlugRoute,
   WorkSlugRoute: WorkSlugRoute,
+  InsightsIndexRoute: InsightsIndexRoute,
   WorkIndexRoute: WorkIndexRoute,
 }
 export const routeTree = rootRouteImport

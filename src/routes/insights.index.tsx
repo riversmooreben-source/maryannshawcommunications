@@ -1,11 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { insightCategories, insights } from "@/data/site";
+import { insightCategories, insights } from "@/data/insights";
 import { PageHeader } from "@/components/page-header";
 import { Reveal } from "@/components/reveal";
 import { CtaBand } from "@/components/cta-band";
 
-export const Route = createFileRoute("/insights")({
+export const Route = createFileRoute("/insights/")({
   head: () => ({
     meta: [
       { title: "Insights, Press Releases & Media Coverage | Maryann Shaw Communications" },
@@ -61,22 +61,24 @@ function Insights() {
             {list.map((a, i) => (
               <Reveal key={a.slug} delay={(i % 3) * 60} className="group">
                 <article>
-                  <div className="overflow-hidden rounded-lg bg-muted">
-                    <img
-                      src={a.image}
-                      alt={a.alt}
-                      loading="lazy"
-                      width={1280}
-                      height={960}
-                      className="h-64 w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
-                    />
-                  </div>
-                  <p className="eyebrow mt-5">{a.category}</p>
-                  <h2 className="mt-3 font-display text-2xl leading-snug">{a.title}</h2>
-                  <p className="mt-3 text-sm text-muted-foreground">{a.excerpt}</p>
-                  <span className="link-underline mt-4 inline-block text-sm font-semibold">
-                    Read article →
-                  </span>
+                  <Link to="/insights/$slug" params={{ slug: a.slug }}>
+                    <div className="overflow-hidden rounded-lg bg-muted">
+                      <img
+                        src={a.image}
+                        alt={a.alt}
+                        loading="lazy"
+                        width={1280}
+                        height={960}
+                        className="h-64 w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
+                      />
+                    </div>
+                    <p className="eyebrow mt-5">{a.category}</p>
+                    <h2 className="mt-3 font-display text-2xl leading-snug">{a.title}</h2>
+                    <p className="mt-3 text-sm text-muted-foreground">{a.excerpt}</p>
+                    <span className="link-underline mt-4 inline-block text-sm font-semibold">
+                      Read article →
+                    </span>
+                  </Link>
                 </article>
               </Reveal>
             ))}

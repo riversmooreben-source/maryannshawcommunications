@@ -181,6 +181,70 @@
   transform: none;
 }
 
+.insight-body {
+  & h3,
+  & h4 {
+    font-family: var(--font-display);
+    color: var(--foreground);
+    line-height: 1.15;
+    margin-top: 1.5em;
+  }
+
+  & h3 {
+    font-size: 1.5rem;
+  }
+
+  & h4 {
+    font-size: 1.25rem;
+  }
+
+  & a {
+    color: var(--foreground);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  & strong {
+    color: var(--foreground);
+    font-weight: 600;
+  }
+
+  & ul,
+  & ol {
+    padding-left: 1.25em;
+  }
+
+  & ul {
+    list-style: disc;
+  }
+
+  & ol {
+    list-style: decimal;
+  }
+
+  & blockquote {
+    border-left: 1px solid var(--border);
+    padding-left: 1.5rem;
+    font-style: italic;
+  }
+
+  & img,
+  & iframe {
+    max-width: 100%;
+    border-radius: 0.5rem;
+  }
+
+  & figure {
+    margin: 1.5em 0;
+  }
+
+  & figcaption {
+    font-size: 0.8125rem;
+    color: var(--muted-foreground);
+    margin-top: 0.5em;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

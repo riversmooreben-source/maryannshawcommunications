@@ -20,8 +20,16 @@ export const contact = {
   whatsapp: "https://wa.me/27834194235",
   location: "Cape Town, South Africa",
   socials: [
-    { label: "Instagram", href: "https://www.instagram.com/maryannshawcomms/", platform: "instagram" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/company/maryann-shaw-communications", platform: "linkedin" },
+    {
+      label: "Instagram",
+      href: "https://www.instagram.com/maryannshawcomms/",
+      platform: "instagram",
+    },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/company/maryann-shaw-communications",
+      platform: "linkedin",
+    },
     { label: "Facebook", href: "https://www.facebook.com/MaryannShawComms", platform: "facebook" },
   ] as const,
 };
@@ -57,7 +65,8 @@ export const services = [
   },
   {
     title: "Social Media",
-    blurb: "Strategic social media management integrated with wider PR and communications activity.",
+    blurb:
+      "Strategic social media management integrated with wider PR and communications activity.",
     detail:
       "We develop engaging content plans along with a strategy to reach and grow your audiences, and make sure those plans are executed effectively.",
   },
@@ -336,141 +345,5 @@ export const team = [
     role: "Social Media Manager",
     image: andreaImg,
     bio: "Andrea manages social media content and community for our clients, keeping social work closely integrated with PR and media activity.",
-  },
-];
-
-export type Insight = {
-  slug: string;
-  category: string;
-  title: string;
-  excerpt: string;
-  image: string;
-  alt: string;
-};
-
-export const insightCategories = [
-  "All",
-  "Media coverage",
-  "Press release",
-  "Case study",
-  "Personal branding",
-];
-
-export const insights: Insight[] = [
-  {
-    slug: "vilaca-mens-health",
-    category: "Media coverage",
-    title: "How Jonathan Vilaca is redefining South African motorsport",
-    excerpt:
-      "Media coverage for client Vilaca Racing in Men's Health Magazine Online, about Jonathan Vilaca and his life in motorsport.",
-    image: workVilaca,
-    alt: "Racing car at speed on a circuit at dusk",
-  },
-  {
-    slug: "kap-sani2c-2025",
-    category: "Press release",
-    title: "The ride of your life in 2025 — KAP sani2c",
-    excerpt:
-      "If you're looking for your next big adventure, set your sights on KwaZulu-Natal and enter the iconic KAP sani2c in May 2025.",
-    image: workSani2c,
-    alt: "Mountain bikers racing on a rural singletrack trail",
-  },
-  {
-    slug: "utct-2023-go-time",
-    category: "Press release",
-    title: "It's go time for RMB Ultra-trail Cape Town 2023",
-    excerpt:
-      "SA's premier ultra-trail running event, now part of the World Trail Majors, kicks off in Cape Town.",
-    image: workTrail,
-    alt: "Trail runners on a mountain ridge above the ocean at dawn",
-  },
-  {
-    slug: "bos-siya-kolisi-can",
-    category: "Press release",
-    title: "BOS Ice Tea launches a limited edition can with Siya Kolisi",
-    excerpt: "Every can sold supports the Kolisi Foundation and impacts the nation.",
-    image: workBos,
-    alt: "Bottles of rooibos iced tea in warm sunlight",
-  },
-  {
-    slug: "kingfish-daily-maverick",
-    category: "Media coverage",
-    title: "Kingfish Enterprises in Daily Maverick",
-    excerpt:
-      "Showcasing a client farming red-listed species like Kob, and raising consumer awareness that farmed Kob is green-listed by SASSI.",
-    image: workKingfish,
-    alt: "Coastal aquaculture tanks at dawn",
-  },
-  {
-    slug: "utct-bucket-list",
-    category: "Media coverage",
-    title: "RMB Ultra-trail Cape Town is now a worldwide bucket list race",
-    excerpt:
-      "A long list of international elite trail runners confirmed entries and travel plans to South Africa for RMB UTCT.",
-    image: workTrail,
-    alt: "Trail runners on a mountain ridge above the ocean at dawn",
-  },
-  {
-    slug: "bos-sparkling",
-    category: "Press release",
-    title: "BOS to shake up the carbonated drinks sector with sparkling ice tea",
-    excerpt:
-      "The much-loved South African rooibos brand launches a range of lightly carbonated ice teas in lemon, tropical and strawberry.",
-    image: workBos,
-    alt: "Bottles of rooibos iced tea in warm sunlight",
-  },
-  {
-    slug: "wild-air-kids-seat",
-    category: "Press release",
-    title: "Locally produced kids' bicycle seat launches in SA",
-    excerpt:
-      "Cape Town mountain biker Doug Bird has developed a bicycle seat for kids that turns family rides into adventures.",
-    image: workWildair,
-    alt: "Cyclist riding on a scenic gravel mountain road",
-  },
-  {
-    slug: "glamtrails-case-study",
-    category: "Case study",
-    title: "Case study: Glamtrails, walking tours in the Hemel-en-Aarde Valley",
-    excerpt:
-      "PR and social media management for a new business offering walking tours with wine and food experiences in the Western Cape.",
-    image: workGlamtrails,
-    alt: "Walkers in a South African wine valley with a picnic setup",
-  },
-  {
-    slug: "sani2c-2018-case-study",
-    category: "Case study",
-    title: "Case study: The 2018 KAP sani2c mountain bike stage race",
-    excerpt:
-      "Brought on board less than a month before the event, we found media angles of interest to an audience wider than mountain bikers.",
-    image: workSani2c,
-    alt: "Mountain bikers racing on a rural singletrack trail",
-  },
-  {
-    slug: "ryan-stramrood-wowsa",
-    category: "Personal branding",
-    title: "Ryan Stramrood, WOWSA award nomination",
-    excerpt:
-      "An international open water swimming award nomination became the platform for further brand-building PR.",
-    image: workSwimrun,
-    alt: "Open water swimmers entering the surf at sunrise",
-  },
-  {
-    slug: "prodigal-khumalo",
-    category: "Personal branding",
-    title: "Personal branding: Prodigal Khumalo, ultra-distance athlete",
-    excerpt:
-      "Brand-building PR for an ultra-distance runner, securing TV, radio, print and online coverage.",
-    image: workTrail,
-    alt: "Trail runners on a mountain ridge above the ocean at dawn",
-  },
-  {
-    slug: "torpedo-moon",
-    category: "Media coverage",
-    title: "Torpedo SwimRun Moon 2021",
-    excerpt:
-      "We identified the journey of Thina Mananyetso as a great story to share, with extreme swimmer Ryan Stramrood assisting along the way.",
-    image: workSwimrun,
-    alt: "Open water swimmers entering the surf at sunrise",
   },
 ];
