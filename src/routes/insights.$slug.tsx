@@ -97,15 +97,6 @@ function InsightArticle() {
                 className="insight-body space-y-6 text-lg leading-relaxed text-muted-foreground"
                 dangerouslySetInnerHTML={{ __html: item.content }}
               />
-
-              <a
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-underline mt-8 inline-block text-sm font-semibold"
-              >
-                View the original post →
-              </a>
             </Reveal>
           </div>
         </div>
