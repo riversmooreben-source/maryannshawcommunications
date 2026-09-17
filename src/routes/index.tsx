@@ -198,14 +198,18 @@ function Home() {
             {work.slice(0, 6).map((w, i) => (
               <Reveal key={w.slug} delay={i * 60} className="group">
                 <Link to="/work" className="block">
-                  <div className="overflow-hidden rounded-lg bg-muted">
+                  <div
+                    className={`overflow-hidden rounded-lg ${w.contained ? "bg-secondary" : "bg-muted"}`}
+                  >
                     <img
                       src={w.image}
                       alt={w.alt}
                       loading="lazy"
                       width={1280}
                       height={960}
-                      className="h-72 w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
+                      className={`h-72 w-full transition-transform duration-[900ms] ease-out group-hover:scale-105 ${
+                        w.contained ? "object-contain p-10 md:p-14" : "object-cover"
+                      }`}
                     />
                   </div>
                   <p className="eyebrow mt-6">{w.category}</p>

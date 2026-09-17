@@ -5,7 +5,7 @@ import workTrail from "@/assets/work-trail.png";
 import workBos from "@/assets/work-bos.png";
 import workGlamtrails from "@/assets/work-glamtrails.png";
 import workSwimrun from "@/assets/work-swimrun.png";
-import workWildair from "@/assets/work-wildair.jpg";
+import workWildair from "@/assets/work-wildair.png";
 import workSani2c from "@/assets/work-sani2c.png";
 import workMotorshow from "@/assets/work-motorshow.png";
 import workKingfish from "@/assets/work-kingfish.jpg";
